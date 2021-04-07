@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2196f3">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+    <title>Book</title>
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="apple-touch-icon" href="img/f7-icon-square.png">
+    <link rel="icon" href="img/f7-icon.png">
+    <style>
+        :root {
+            --f7-theme-color: #DAA520;
+            --f7-theme-color-rgb: 218, 165, 32;
+            --f7-theme-color-shade: #b68a1b;
+            --f7-theme-color-tint: #e3b440;
+        }
+
+        .demo-swiper .swiper-slide {
+            font-size: 15px;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            color: #fff;
+        }
+
+        .demo-swiper .swiper-slide {
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            background: #fff;
+        }
+
+        .demo-swiper {
+            margin: 0px 0 35px;
+            font-size: 18px;
+            height: 200px;
+        }
+
+        .demo-swiper.demo-swiper-auto .swiper-slide {
+            width: 85%;
+        }
+
+        .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+            width: 70%;
+        }
+
+        .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+            width: 30%;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .wavy {
+            position: relative;
+            -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+        }
+
+        .wavy span {
+            position: relative;
+            display: inline-block;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            color: whitesmoke;
+            animation: animate 1s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        @media {
+            .wavy span {
+                font-size: 1.3em;
+            }
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0px);
+            }
+
+            20% {
+                transform: translateY(-20px);
+            }
+
+            40%,
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .searchbar1 {
+            background: #2f3640;
+            height: 25px;
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        #smovie {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 25px;
+            width: 100%;
+        }
+
+        #smovie1 {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 25px;
+            width: 100%;
+        }
+
+        #smovie2 {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 25px;
+            width: 100%;
+        }
+
+        #smovie3 {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 25px;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #DAA520;
+        }
+
+        .block-title {
+            color: #DAA520;
+        }
+
+        #cover {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6979166666666667) 0%, rgba(0, 0, 0, 0.6951155462184874) 50%), url(img/white.gif);
+            background-size: cover;
+            z-index: 9999;
+        }
+
+        #splash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 17%;
+            width: 90%;
+            margin: auto;
+            animation-name: example;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes example {
+            from {
+                bottom: 120%;
+            }
+
+            to {
+                bottom: 17%;
+            }
+        }
+
+        #splash1 {
+            position: absolute;
+            top: 65%;
+            left: 10%;
+            right: 10%;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            color: white;
+            opacity: 1;
+            animation-name: example1;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes example1 {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .rating {
+            float: left;
+        }
+
+        /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+        .rating:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .rating:not(:checked)>label {
+            float: right;
+            width: 0.8em;
+            padding: 0 .05em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 200%;
+            line-height: 1.2;
+            color: #ddd;
+            text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked)>label:before {
+            content: '★ ';
+        }
+
+        .rating>input:checked~label {
+            color: #f70;
+            text-shadow: 1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked)>label:hover,
+        .rating:not(:checked)>label:hover~label {
+            color: gold;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating>input:checked+label:hover,
+        .rating>input:checked+label:hover~label,
+        .rating>input:checked~label:hover,
+        .rating>input:checked~label:hover~label,
+        .rating>label:hover~input:checked~label {
+            color: #ea0;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating>label:active {
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+
+        /* end of Lea's code */
+
+        /*
+ * Clearfix from html5 boilerplate
+ */
+
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            /* 1 */
+            display: table;
+            /* 2 */
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        /*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        /* my stuff */
+        #status,
+        button {
+            margin: 20px 0;
+        }
+
+        .custom-accordion {
+            color: white;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .custom-accordion .accordion-item-toggle {
+            padding: 0px 15px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 17px;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+        }
+
+        .custom-accordion .accordion-item-toggle:active {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .custom-accordion .accordion-item-toggle span {
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        .custom-accordion .accordion-item:last-child .accordion-item-toggle {
+            border-bottom: none;
+        }
+
+        .custom-accordion .icon-plus,
+        .custom-accordion .icon-minus {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .custom-accordion .icon-minus {
+            display: none;
+        }
+
+        .custom-accordion .accordion-item-opened .icon-minus {
+            display: inline-block;
+        }
+
+        .custom-accordion .accordion-item-opened .icon-plus {
+            display: none;
+        }
+
+        .custom-accordion .accordion-item-content {
+            padding: 0px 15px;
+        }
+
+        .post {
+
+            animation: mymove 3s infinite;
+        }
+
+        @keyframes mymove {
+            50% {
+                box-shadow: 0 6px 10px 0 rgba(255, 255, 255, 0.2), 0 8px 22px 0 rgba(255, 255, 255, 0.19);
+            }
+        }
+
+        .glow {
+            color: #DAA520;
+
+        }
+
+    </style>
+</head>
+
+<body class='theme-dark'>
+    <div id="cover">
+        <img id="splash" style="width: 60%" src="img/f7-icon.png">
+        <h3 id="splash1">Book Hybrid Mobile Application Design by <span style='color: #DAA520;'>CHANDESH LILLMOND</span></h3>
+    </div>
+    <div id="app">
+        <div class="panel panel-left panel-cover panel-resizable panel-init">
+            <div class="page">
+                <div class="page-content theme-dark" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4542191876750701) 0%, rgba(0, 0, 0, 0.44861694677871145) 50%), url(img/panel.jpg); background-size: cover;">
+                    <div class="block">
+                        <img class="center" src="img/book.png">
+                    </div>
+                    <div class="block">
+                        <h2 style="color: #DAA520;">Navigation Menu</h2>
+                    </div>
+                    <div class="list links-list" style="background-color: transparent;">
+                        <ul style="background-color: transparent;">
+                            <li id="hi">
+                                <a href="/appbar/" class="panel-close">Read Items</a>
+                            </li>
+                            <li>
+                                <a href="/toast/" class="panel-close">Favorite Items</a>
+                            </li>
+                            <li>
+                                <a href="/contacts-list/" class="panel-close">Feedback Form</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="block">
+                        <h2 style="color: #DAA520;">About</h2>
+                    </div>
+                    <div class="block">
+                        <h3>Book API</h3>
+                        <h4 style="opacity: 0.6;">The Open Book Database</h4>
+                        <p style="text-align: justify;">The Book API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by its users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view view-main view-init safe-areas" data-master-detail-breakpoint="800" data-url="/">
+            <div class="page page-home">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+
+                        <div class="title">Book API</div>
+                        <div class="right">
+                            <a href="#" class="link icon-only panel-open" data-panel="left">
+                                <i class="icon f7-icons if-not-md">menu</i>
+                                <i class="icon material-icons md-only">menu</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar toolbar-bottom tabbar">
+                    <div class="toolbar-inner">
+                        <a href="#tab-1" class="tab-link tab-link-active">Title</a>
+                        <a href="#tab-2" class="tab-link">Author</a>
+                        <a href="#tab-3" class="tab-link">Year</a>
+                        <a href="#tab-4" class="tab-link">Category</a>
+                    </div>
+                </div>
+                <div class="tabs-swipeable-wrap">
+                    <div class="tabs">
+                        <div id="tab-1" class="page-content tab tab-active" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4542191876750701) 0%, rgba(0, 0, 0, 0.44861694677871145) 50%), url(img/tab1.jpg); background-size: cover;">
+                            <div class="block">
+                                <div class="row">
+                                    <div class="col-75">
+                                        <div class="searchbar1">
+                                            <input id="smovie" type="search" placeholder="Search by Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-25"><a onclick="valid()" class="col button button-large button-fill button-round color-red">Search</a></div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="block-title">Harry Potter</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="title1">
+                                </div>
+                            </div>
+                            <div class="block-title">The Chronicles Of Narnia</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="title2">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="page-content tab" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4542191876750701) 0%, rgba(0, 0, 0, 0.44861694677871145) 50%), url(img/tab2.jpg); background-size: cover;">
+                            <div class="block">
+                                <div class="row">
+                                    <div class="col-75">
+                                        <div class="searchbar1">
+                                            <input id="smovie1" type="search" placeholder="Search by Author">
+                                        </div>
+                                    </div>
+                                    <div class="col-25"><a onclick="valid1()" class="col button button-large button-fill button-round color-red">Search</a></div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="block-title">J.R.R Tolkien</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="author1">
+                                </div>
+                            </div>
+                            <div class="block-title">Stephen King</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="author2">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="page-content tab" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4542191876750701) 0%, rgba(0, 0, 0, 0.44861694677871145) 50%), url(img/tab3.jpg); background-size: cover;">
+                            <div class="block">
+                                <div class="row">
+                                    <div class="col-75">
+                                        <div class="searchbar1">
+                                            <input id="smovie2" type="search" placeholder="Search by Publication Year">
+                                        </div>
+                                    </div>
+                                    <div class="col-25"><a onclick="valid2()" class="col button button-large button-fill button-round color-red">Search</a></div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="block-title">2020</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="year1">
+                                </div>
+                            </div>
+                            <div class="block-title">2020</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="year2">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-4" class="page-content tab" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4542191876750701) 0%, rgba(0, 0, 0, 0.44861694677871145) 50%), url(img/tab4.jpg); background-size: cover;">
+                            <div class="block">
+                                <div class="row">
+                                    <div class="col-75">
+                                        <div class="searchbar1">
+                                            <input id="smovie3" type="search" placeholder="Search by Category">
+                                        </div>
+                                    </div>
+                                    <div class="col-25"><a onclick="valid3()" class="col button button-large button-fill button-round color-red">Search</a></div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="block-title">Fiction</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="category1">
+                                </div>
+                            </div>
+                            <div class="block-title">Children</div>
+                            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-wrapper" id="category2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup demo-popup">
+            <div class="page" data-name="1detail">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+                        <div class="title">Details</div>
+                        <div class="right"><a href="#" class="link popup-close">Close</a></div>
+                    </div>
+                </div>
+                <div class="page-content" id="back">
+                    <div class="block">
+                        <div id="ti">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="block">
+                            <div id="dd">
+                            </div>
+                            <a class="col button button-fill button-round popup-open" href="#" data-popup=".second-popup" style="color: white;">Read Book</a>
+                            <div class="list simple-list" id="logged" style="background-color: transparent;">
+                                <ul style="background-color: transparent;">
+                                    <li>
+                                        <span>Already Read</span>
+                                        <label class="toggle toggle-init color-yellow">
+                                            <input id="toggle-dark" name="demo-checkbox-movies" type="checkbox" />
+                                            <span class="toggle-icon"></span>
+                                        </label>
+                                    </li>
+                                    <li id="green">
+                                        <span>Favorite Book</span>
+                                        <label class="toggle toggle-init color-yellow">
+                                            <input id="toggle-green" name="mm" type="checkbox" />
+                                            <span class="toggle-icon"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="popup second-popup">
+            <div class="page" data-name="1detail">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+                        <div class="title">Read Book</div>
+                        <div class="right"><a href="#" class="link popup-close">Close</a></div>
+                    </div>
+                </div>
+                <div class="page-content" id="back1">
+                    <canvas id="the-canvas" style="width: 100%" height="100%;"></canvas>
+                    <div class="block">
+                        <div class="row">
+                            <!-- Each "cell" has col-[width in percents] class -->
+                            <div class="col-33"><button id="prev" class="col button button-fill button-round">Previous</button></div>
+                            <div class="col-33"><span>Page: <span id="page_num"></span> / <span id="page_count"></span></span></div>
+                            <div class="col-33"><button id="next" class="col button button-fill button-round">Next</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/framework7.bundle.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/pdf.js"></script>
+
+    <script>
+        var $$ = Dom7;
+        setInterval(splashscreen, 4000);
+
+        function splashscreen() {
+            jQuery("#cover").css({
+                'display': 'none'
+            });
+        }
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&s=harry%20potter").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("title1").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&s=the%20Chronicles%20of%20narnia").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("title2").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&a=J.R.R.%20Tolkien").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("author1").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&a=J.K.%20Rowling").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("author2").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&p=2020").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("year1").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&p=2020").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("year2").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&c=fiction").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("category1").innerHTML = txt;
+
+            });
+
+        $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&c=children").then(
+            function(response) {
+                var txt = "";
+                for (x in response.data) {
+
+                    txt += "<div class='swiper-slide popup-open' onclick=\"myFunction('" + response.data[x].book_title + "')\"  data-popup='.demo-popup' style='width: 30%; box-sizing: border-box; display: flex; background-image: url(" + response.data[x].cover_photo + "); background-size: cover;'></div>";
+                }
+
+                document.getElementById("category2").innerHTML = txt;
+
+            });
+
+        var db = openDatabase("bookDB", '1.0', "My WebSQL Database", 2 * 1024 * 1024);
+        db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS read(id INT AUTOINCREAMENT, title TEXT, lan TEXT, year INT, poster TEXT)");
+            tx.executeSql("CREATE TABLE IF NOT EXISTS favorite(id INT AUTOINCREAMENT, title TEXT, lan TEXT, year INT, poster TEXT)");
+        });
+
+        $$('#toggle-dark').on('change', function() {
+            if ($$('#toggle-dark').prop('checked') == true) {
+                $$('.open-preloader');
+                app.dialog.preloader('Moving to Read List');
+                setTimeout(function() {
+                    app.dialog.close();
+                }, 3000);
+                db.transaction(function(tx) {
+                    var title = document.getElementById('mti').innerHTML;
+                    var lan = document.getElementById('mlan').innerHTML;
+                    var year = document.getElementById('mye').innerHTML;
+                    var img = document.getElementById("post").src;
+                    var sql = 'INSERT INTO read (title, lan, year, poster) VALUES (?,?,?,?)';
+                    tx.executeSql(sql, [title, lan, year, img]);
+                });
+
+            } else {
+                db.transaction(function(tx) {
+                    $$('.open-preloader');
+                    app.dialog.preloader('Removing from Read List');
+                    setTimeout(function() {
+                        app.dialog.close();
+                    }, 3000);
+                    var title = document.getElementById('mti').innerHTML;
+                    var year = document.getElementById('mye').innerHTML;
+                    var sql = 'DELETE FROM read WHERE title = ? and year = ?';
+                    tx.executeSql(sql, [title, year]);
+                });
+
+            }
+        });
+
+        $$('#toggle-green').on('change', function() {
+            if ($$('#toggle-green').prop('checked') == true) {
+                $$('.open-preloader');
+                app.dialog.preloader('Moving to Favorite List');
+                setTimeout(function() {
+                    app.dialog.close();
+                }, 3000);
+                db.transaction(function(tx) {
+                    var title = document.getElementById('mti').innerHTML;
+                    var year = document.getElementById('mye').innerHTML;
+                    var lan = document.getElementById('mlan').innerHTML;
+                    var img = document.getElementById("post").src;
+                    var sql = 'INSERT INTO favorite (title, lan, year, poster) VALUES (?,?,?,?)';
+                    tx.executeSql(sql, [title, lan, year, img]);
+                });
+
+            } else {
+                db.transaction(function(tx) {
+                    $$('.open-preloader');
+                    app.dialog.preloader('Removing from Favorite List');
+                    setTimeout(function() {
+                        app.dialog.close();
+                    }, 3000);
+                    var title = document.getElementById('mti').innerHTML;
+                    var year = document.getElementById('mye').innerHTML;
+                    var sql = 'DELETE FROM favorite WHERE title = ? and year = ?';
+                    tx.executeSql(sql, [title, year]);
+                });
+            }
+        });
+
+        function valid() {
+            if ($("#smovie").val() == "") {
+                $$('.open-alert');
+                app.dialog.alert("Search cannot be empty!", 'Book API');
+            } else {
+
+                var mainView = app.views.create('.view-main');
+                mainView.router.navigate('/about/');
+            }
+
+        }
+
+        function valid1() {
+            if ($("#smovie1").val() == "") {
+                $$('.open-alert');
+                app.dialog.alert("Search cannot be empty!", 'Book API');
+            } else {
+
+                var mainView = app.views.create('.view-main');
+                mainView.router.navigate('/badge/');
+            }
+
+        }
+
+        function valid2() {
+            if ($("#smovie2").val() == "") {
+                $$('.open-alert');
+                app.dialog.alert("Search cannot be empty!", 'Book API');
+            } else {
+
+                var mainView = app.views.create('.view-main');
+                mainView.router.navigate('/tabs/');
+            }
+
+        }
+
+        function valid3() {
+            if ($("#smovie3").val() == "") {
+                $$('.open-alert');
+                app.dialog.alert("Search cannot be empty!", 'Book API');
+            } else {
+
+                var mainView = app.views.create('.view-main');
+                mainView.router.navigate('/toggle/');
+            }
+
+        }
+
+        $$(document).on('page:init', '.page[data-name="about"]', function(e) {
+            var str = $("#smovie").val();
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&s=" + str).then(
+                function(response) {
+                    var txt = "";
+                    var stxt = "";
+                    var res = response.Count;
+                    for (x in response.data) {
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                        stxt += "<option value='" + response.data[x].publication_year + "'>" + response.data[x].publication_year + "</option>";
+                    }
+
+                    document.getElementById("easyPaginate").innerHTML = txt;
+                    document.getElementById("syear").innerHTML += stxt;
+                    //alert(res);
+                    $$('.open-alert');
+                app.dialog.alert("Number of Book Found: " + res, 'Book API');
+
+
+                });
+
+        })
+
+        $$(document).on('page:init', '.page[data-name="tabs"]', function(e) {
+            var str = $("#smovie2").val();
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&p=" + str).then(
+                function(response) {
+                    var txt = "";
+                    var res = response.Count;
+                    for (x in response.data) {
+
+
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                    }
+
+                    document.getElementById("tabs").innerHTML = txt;
+                    $$('.open-alert');
+                app.dialog.alert("Number of Book Found: " + res, 'Book API');
+
+
+                });
+
+        })
+
+        $$(document).on('page:init', '.page[data-name="toggle"]', function(e) {
+            var str = $("#smovie3").val();
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&c=" + str).then(
+                function(response) {
+                    var txt = "";
+                    var res = response.Count;
+                    for (x in response.data) {
+
+
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                    }
+
+                    document.getElementById("toggle").innerHTML = txt;
+                    $$('.open-alert');
+                app.dialog.alert("Number of Book Found: " + res, 'Book API');
+                });
+
+        })
+
+        $$(document).on('page:init', '.page[data-name="badge"]', function(e) {
+            var str = $("#smovie1").val();
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&i=" + str).then(
+                function(response) {
+                    var txt = "";
+                    var stxt = "";
+                   var res = response.Count;
+                    for (x in response.data) {
+
+
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                        stxt += "<option value='" + response.data[x].publication_year + "'>" + response.data[x].publication_year + "</option>";
+                    }
+
+                    document.getElementById("qq").innerHTML = txt;
+                    document.getElementById("syear1").innerHTML += stxt;
+                    //alert(res);
+                    $$('.open-alert');
+               app.dialog.alert("Number of Book Found: " + res, 'Book API');
+
+
+
+                });
+
+        })
+
+        function myFunction(name) {
+            //alert(name);
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&t=" + name).then(
+                function(response) {
+                    //console.log("e"+response);
+
+                    var txt1 = "";
+                    var image = response.data.cover_photo;
+                    if (response.data.rating == 0) {
+                        var r0 = "display: none;";
+                        var r2 = "";
+                        var r3 = "";
+                        var r4 = "";
+                        var r5 = "";
+                        var r1 = "";
+                    } else if (response.data.rating == 1) {
+                        var r1 = "checked";
+                        var r2 = "";
+                        var r3 = "";
+                        var r4 = "";
+                        var r5 = "";
+                        var r0 = "";
+                    } else if (response.data.rating == 2) {
+                        var r2 = "checked";
+                        var r0 = "";
+                        var r3 = "";
+                        var r4 = "";
+                        var r5 = "";
+                        var r1 = "";
+                    } else if (response.data.rating == 3) {
+                        var r3 = "checked";
+                        var r2 = "";
+                        var r0 = "";
+                        var r4 = "";
+                        var r5 = "";
+                        var r1 = "";
+                    } else if (response.data.rating == 4) {
+                        var r4 = "checked";
+                        var r2 = "";
+                        var r3 = "";
+                        var r0 = "";
+                        var r5 = "";
+                        var r1 = "";
+                    } else if (response.data.rating == 5) {
+                        var r5 = "checked";
+                        var r2 = "";
+                        var r3 = "";
+                        var r4 = "";
+                        var r0 = "";
+                        var r1 = "";
+                    }
+
+
+                    txt1 = "<div class='row'><div class='col-50'><img id='post' class='post' src='" + image + "' style='width: 100%; border-radius: 8px;'></div><div class='col-50'><h3 id='mti' class='glow'>" + response.data.title + "</h3><h3 class='glow'>" + response.data.authors + "</h3><p>Year: <span id='mye'>" + response.data.publication_year + "</span></p><div style='" + r0 + "'><form><fieldset class='rating' style='border:none;'><input type='radio' " + r5 + " /><label for='star5' title='Rocks!'>5 stars</label><input type='radio' " + r4 + " /><label for='star4' title='Pretty good' >4 stars</label><input type='radio' " + r3 + " /><label for='star3' title='Meh'>3 stars</label><input type='radio' " + r2 + " /><label for='star2' title='Kinda bad'>2 stars</label><input type='radio' " + r1 + " /><label for='star1' title='Sucks big time' >1 star</label></fieldset><div class='clearfix'></div></form></div><p>Language: <span id='mlan'>" + response.data.language + "</span></p></div></div><p style='text-align: justify;'>" + response.data.description + "</p><p>Genre: " + response.data.category + "</p><p>isbn: " + response.data.isbn + "</p><p>Best Seller: " + response.data.best_seller + "</p>";
+
+
+                    document.getElementById("back").setAttribute('style', 'background-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6979166666666667) 0%, rgba(0,0,0,0.6951155462184874) 50%), url(' + image + '); background-size: cover;');
+                    document.getElementById("back1").setAttribute('style', 'background-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6979166666666667) 0%, rgba(0,0,0,0.6951155462184874) 50%), url(' + image + '); background-size: cover;');
+                    document.getElementById("dd").innerHTML = txt1;
+
+                    var url = response.data.pdf;
+
+                    var pdfDoc = null,
+                        pageNum = 1,
+                        pageRendering = false,
+                        pageNumPending = null,
+                        scale = 1.2,
+                        canvas = document.getElementById('the-canvas'),
+                        ctx = canvas.getContext('2d');
+
+                    /**
+                     * Get page info from document, resize canvas accordingly, and render page.
+                     * @param num Page number.
+                     */
+                    function renderPage(num) {
+                        pageRendering = true;
+                        // Using promise to fetch the page
+                        pdfDoc.getPage(num).then(function(page) {
+                            var viewport = page.getViewport({
+                                scale: scale
+                            });
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+
+                            // Render PDF page into canvas context
+                            var renderContext = {
+                                canvasContext: ctx,
+                                viewport: viewport
+                            };
+                            var renderTask = page.render(renderContext);
+
+                            // Wait for rendering to finish
+                            renderTask.promise.then(function() {
+                                pageRendering = false;
+                                if (pageNumPending !== null) {
+                                    // New page rendering is pending
+                                    renderPage(pageNumPending);
+                                    pageNumPending = null;
+                                }
+                            });
+                        });
+
+                        // Update page counters
+                        document.getElementById('page_num').textContent = num;
+                    }
+
+                    /**
+                     * If another page rendering in progress, waits until the rendering is
+                     * finised. Otherwise, executes rendering immediately.
+                     */
+                    function queueRenderPage(num) {
+                        if (pageRendering) {
+                            pageNumPending = num;
+                        } else {
+                            renderPage(num);
+                        }
+                    }
+
+                    /**
+                     * Displays previous page.
+                     */
+                    function onPrevPage() {
+                        if (pageNum <= 1) {
+                            return;
+                        }
+                        pageNum--;
+                        queueRenderPage(pageNum);
+                    }
+                    document.getElementById('prev').addEventListener('click', onPrevPage);
+
+                    /**
+                     * Displays next page.
+                     */
+                    function onNextPage() {
+                        if (pageNum >= pdfDoc.numPages) {
+                            return;
+                        }
+                        pageNum++;
+                        queueRenderPage(pageNum);
+                    }
+                    document.getElementById('next').addEventListener('click', onNextPage);
+
+                    /**
+                     * Asynchronously downloads PDF.
+                     */
+                    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+                        pdfDoc = pdfDoc_;
+                        document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+                        // Initial/first page rendering
+                        renderPage(pageNum);
+                    });
+
+
+                });
+            window.setTimeout(timing, 2000);
+
+            function timing() {
+                db.transaction(function(tx) {
+                    var title1 = document.getElementById('mti').innerHTML;
+                    var year1 = document.getElementById('mye').innerHTML;
+
+                    tx.executeSql('SELECT * FROM read', [], function(tx, results1) {
+                        var len1 = results1.rows.length,
+                            j;
+                        for (j = 0; j < len1; j++) {
+                            if (results1.rows.item(j).title == title1 && results1.rows.item(j).year == year1) {
+
+                                $('[name="demo-checkbox-movies"]').prop('checked', true);
+                                break;
+                            } else {
+                                $('[name="demo-checkbox-movies"]').prop('checked', false);
+
+                            }
+                        }
+                    }, null);
+                });
+            }
+
+            window.setTimeout(timing1, 2000);
+
+            function timing1() {
+                db.transaction(function(tx) {
+                    var title1 = document.getElementById('mti').innerHTML;
+                    var year1 = document.getElementById('mye').innerHTML;
+                    tx.executeSql('SELECT * FROM favorite', [], function(tx, results1) {
+                        var len1 = results1.rows.length,
+                            j;
+                        for (j = 0; j < len1; j++) {
+                            if (results1.rows.item(j).title == title1 && results1.rows.item(j).year == year1) {
+                                //alert("eee");
+                                $('[name="mm"]').prop('checked', true);
+                                break;
+                            } else {
+                                $('[name="mm"]').prop('checked', false);
+                            }
+                        }
+                    }, null);
+                });
+            }
+        }
+
+        $$(document).on('page:init', '.page[data-name="boook"]', function(e) {
+            db.transaction(function(tx) {
+                tx.executeSql('SELECT * FROM favorite', [], function(tx, results1) {
+                    var len1 = results1.rows.length,
+                        j;
+                    var txt = "";
+                    for (j = 0; j < len1; j++) {
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;'><div class='card-content'><a href='#' onclick=\"myFunction('" + results1.rows.item(j).title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + results1.rows.item(j).poster + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + results1.rows.item(j).title + "</span><p style='opacity: 0.7'>Year: " + results1.rows.item(j).year + "</p><p style='opacity: 0.7'>Language: " + results1.rows.item(j).lan + "</p></b></div></div></a></div></div>";
+                    }
+                    document.getElementById("book").innerHTML = txt;
+                    setTimeout(function() {
+                        if ($('.card').length == 0) {
+                            $$('.open-alert');
+                            app.dialog.alert("No Items has been added", 'Movie API');
+                        }
+                    }, 1000);
+
+
+
+                }, null);
+            });
+        })
+
+        $$(document).on('page:init', '.page[data-name="watched"]', function(e) {
+            db.transaction(function(tx) {
+                tx.executeSql('SELECT * FROM read', [], function(tx, results1) {
+                    var len1 = results1.rows.length,
+                        j;
+                    var txt = "";
+                    for (j = 0; j < len1; j++) {
+
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;'><div class='card-content'><a href='#' onclick=\"myFunction('" + results1.rows.item(j).title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + results1.rows.item(j).poster + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + results1.rows.item(j).title + "</span><p style='opacity: 0.7'>Year: " + results1.rows.item(j).year + "</p><p style='opacity: 0.7'>Language: " + results1.rows.item(j).lan + "</p></b></div></div></a></div></div>";
+                    }
+                    document.getElementById("wat").innerHTML = txt;
+                    setTimeout(function() {
+                        if ($('.card').length == 0) {
+                            $$('.open-alert');
+                            app.dialog.alert("No Items has been added", 'Movie API');
+                        }
+                    }, 1000);
+
+                }, null);
+            });
+        })
+
+
+        function OnGradeChanged(value) {
+            var str = $("#smovie").val();
+            if (value == "none") {
+                var none = "";
+            } else {
+                var none = "&p=" + value;
+            }
+
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&s=" + str + none).then(
+                function(response) {
+                    var txt = "";
+                    for (x in response.data) {
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                    }
+                    document.getElementById("easyPaginate").innerHTML = "";
+                    document.getElementById("easyPaginate").innerHTML = txt;
+                });
+        }
+
+        function OnChanged(value) {
+            var str = $("#smovie1").val();
+            if (value == "none") {
+                var none = "";
+            } else {
+                var none = "&p=" + value;
+            }
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&i=" + str + none).then(
+                function(response) {
+                    var txt = "";
+                    for (x in response.data) {
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                    }
+                    document.getElementById("qq").innerHTML = "";
+                    document.getElementById("qq").innerHTML = txt;
+                });
+        }
+
+
+        function cat(value) {
+            var str = $("#smovie1").val();
+            if (value == "none") {
+                var none = "";
+            } else {
+                var none = "&c=" + value;
+            }
+            $.getJSON("http://localhost:8080/book_api/index.php?key=tX12Xv&i=" + str + none).then(
+                function(response) {
+                    var txt = "";
+                    for (x in response.data) {
+                        txt += "<div class='card' style='border-radius: 15px 50px 30px;box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);'><div class='card-content'><a href='#' onclick=\"myFunction('" + response.data[x].book_title + "')\" class='popup-open' data-popup='.demo-popup'><div style='height: 500px; border-radius: 25px; background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4542191876750701) 0%, rgba(0,0,0,0.44861694677871145) 50%), url(" + response.data[x].cover_photo + "); background-size: cover;'><div class='card-header text-color-white display-block'><br/><b><span id='span_id'>" + response.data[x].book_title + "</span><p style='opacity: 0.7'>Year: " + response.data[x].publication_year + "</p><p style='opacity: 0.7'>Language: " + response.data[x].language + "</p></b></div></div></a></div></div>";
+                    }
+                    document.getElementById("qq").innerHTML = "";
+                    document.getElementById("qq").innerHTML = txt;
+                });
+        }
+
+    </script>
+
+    <script>
+        var sendlg = function() {
+            var qt1 = $("[name='qtitle1']").val();
+            var qd1 = $("[name='qdesc1']").val();
+            Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "riverbay06@gmail.com",
+                    Password: "riverbay_2020",
+                    To: "chandeshlillmond06@gmail.com",
+                    From: "riverbay06@gmail.com",
+                    Subject: 'Movie API',
+                    Body: 'Hello I am ' + qt1 + ', My feedback is: <br/>' + qd1 + "<br/>",
+                })
+                .then(function(message) {
+                    $$('.open-alert');
+                    app.dialog.alert('Feedback sent Successfully', 'Book API');
+                });
+
+        }
+
+        var clear1 = function() {
+
+            $("#qtitle1").val("");
+            $("#qdesc1").val("");
+        }
+
+    </script>
+
+</body>
+
+</html>
